@@ -1,0 +1,136 @@
+.nav-title{
+    padding: 20px;
+}
+.nav{
+    padding: 20px;
+    text-decoration: none;
+}
+a{
+    color: inherit;
+}
+.nav:hover{
+    background-color: grey;
+}
+.navAct{
+    color: blueviolet
+}
+.fulnav{
+    padding: 2px;
+    background-color: rgb(222, 222, 222);
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+
+}
+.dfulnav{
+    padding: 2px;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.nav-button{
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+}
+.nav-button:hover{
+    background-color: #266728;
+}
+#log-out{
+    margin-right: 20px;
+    background-color: #ca2929;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+}
+#log-out:hover{
+    background-color: #4d0606;
+}
+.register input{
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: large;
+}
+#header{
+    display: block;
+    text-align: center;
+}
+.register {
+    border: 2px solid #000;
+    padding: 20px;
+    background-color: bisque;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 100px;
+}
+#sign-b{
+    margin: 30px auto;
+    display: block;
+    padding: 40px;
+    font-size: large;
+    background-color: blue;
+    border-radius: 10px;
+    color: ghostwhite;
+    cursor: pointer;
+}
+#home-header{
+    margin:50px;
+    color:#266728;
+}
+#home-content{
+    margin:50px;
+    color: #4CAF50;
+}
+#sign-log{
+    margin: 30px auto;
+    text-align: center;
+    padding: 40px;
+    font-size: large;
+    border: none;
+    border-radius: 10px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.login input{
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: large;
+}
+#header{
+    display: block;
+    text-align: center;
+}
+.login {
+    border: 2px solid #000;
+    background-color: rgb(15, 243, 243);
+    padding: 20px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+    margin-top: 100px;
+}
