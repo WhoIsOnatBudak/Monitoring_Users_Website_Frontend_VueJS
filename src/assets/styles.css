@@ -134,3 +134,17 @@ body {
     margin: auto;
     margin-top: 100px;
 }
+.liste{
+    border: 2px solid #a6a6a6;
+    padding: 20px;
+    margin: 20px;
+    background-color: #c4bcbc;
+    border-radius: 5px;
+    width: fit-content;
+}
+#listB{
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: burlywood;
+}

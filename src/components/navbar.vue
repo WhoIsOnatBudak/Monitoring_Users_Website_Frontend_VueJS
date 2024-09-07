@@ -40,6 +40,11 @@
                             link: 'About',
                             go: 'about',
                         }
+                        ,
+                        {
+                            link: 'GetList',
+                            go: 'getlist'
+                        }
                     ]
 
                     
