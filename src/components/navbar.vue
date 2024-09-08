@@ -45,6 +45,11 @@
                             link: 'GetList',
                             go: 'getlist'
                         }
+                        ,
+                        {
+                            link: 'UserInfo',
+                            go: 'userinfo'
+                        }
                     ]
 
                     

@@ -3,6 +3,7 @@ import Sign from './components/sign.vue'
 import About from './components/about.vue'
 import Login from './components/login.vue'
 import GetList from './components/getlist.vue'
+import userinfo from './components/userinfo.vue'
 import { createRouter,createWebHistory} from 'vue-router'
 
 const routes = [
@@ -29,6 +30,11 @@ const routes = [
     {
         component: GetList,
         path: "/getlist"
+    }
+    ,
+    {
+        component: userinfo,
+        path: "/userinfo"
     }
 
 ];
