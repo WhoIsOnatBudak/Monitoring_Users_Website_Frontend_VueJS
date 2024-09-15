@@ -141,6 +141,10 @@ body {
     background-color: #c4bcbc;
     border-radius: 5px;
     width: fit-content;
+    cursor: pointer;
+}
+.liste:hover{
+    background-color: #918b8b;
 }
 #listB{
     margin: 20px;
