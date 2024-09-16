@@ -6,13 +6,16 @@
       <h3>Car Details</h3>
       <ul>
         <li v-for="(car, index) in carDetails" :key="index" :class="{'deleted': deletionStatus[index] === 1}">
-          {{ car.make }} | {{ car.model }} | {{ car.year }}
-          <button :class="{'not': deletionStatus[index] === 1  }" @click="deleteCar(car.id,userId,index)">Delete</button>
+          {{ car.make }} | {{ car.model }} | {{ car.year }} | {{ car.type }} |
+          <span v-if="car.type === 'SUPER'"> horsepower = {{ car.horsepower }}</span> 
+          <span v-if="car.type === 'CHEAP'"> price = {{ car.price }}</span> 
+          <button :class="{'not': deletionStatus[index] === 1}" @click="deleteCar(car.id, userId, index)">Delete</button>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref } from 'vue';
