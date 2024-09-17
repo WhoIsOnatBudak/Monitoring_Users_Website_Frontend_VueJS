@@ -5,30 +5,30 @@
       <h3>User ID: {{ userId }}</h3> <!-- Display the userId here if needed -->
       <h3>Car Details</h3>
       <ul>
-        <li v-for="(car, index) in carDetails" :key="index" :class="{'deleted': deletionStatus[index] === 1}">
+        <li v-for="car in carDetails" :key="car.id" :class="{'deleted': deletedCars.has(car.id)}">
           {{ car.make }} | {{ car.model }} | {{ car.year }} | {{ car.type }} |
           <span v-if="car.type === 'SUPER'"> horsepower = {{ car.horsepower }}</span> 
           <span v-if="car.type === 'CHEAP'"> price = {{ car.price }}</span> 
-          <button :class="{'not': deletionStatus[index] === 1}" @click="deleteCar(car.id, userId, index)">Delete</button>
+          <button :class="{'not': deletedCars.has(car.id)}" @click="deleteCar(car.id, userId, index)">Delete</button>
         </li>
       </ul>
     </div>
   </div>
 </template>
 
-
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 
-const props = defineProps(['carDetails', 'show', 'userId']); // Include userId as a prop
+const props = defineProps(['carDetails', 'show', 'userId']);
 const emit = defineEmits(['update:show']);
 
-const deletionStatus = ref(new Array(props.carDetails.length).fill(0));
+const deletedCars = ref(new Set());
 
 const closeModal = () => {
   emit('update:show', false);
 };
-const deleteCar = async (idCar, idUser,index) => {
+
+const deleteCar = async (carId) => {
   const tokenJson = localStorage.getItem('token');
 
   if (tokenJson) {
@@ -40,8 +40,8 @@ const deleteCar = async (idCar, idUser,index) => {
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
-      carId: idCar,
-      userId: idUser
+      carId: carId,
+      userId: props.userId
     });
 
     const requestOptions = {
@@ -56,7 +56,7 @@ const deleteCar = async (idCar, idUser,index) => {
       const result = await response.text();
 
       if (response.ok) {
-        deletionStatus.value[index] = 1;  
+        deletedCars.value.add(carId);  // Add carId to deletedCars set
       } else {
         console.error(result);
       }
@@ -68,46 +68,44 @@ const deleteCar = async (idCar, idUser,index) => {
 
 
 </script>
-  
-  <style scoped>
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  .deleted {
-    color: red;
-    text-decoration: line-through;
-  }
-  .not{
-    display: none;
-  }
 
-  </style>
-  
+<style scoped>
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.deleted {
+  color: red;
+  text-decoration: line-through;
+}
+.not {
+  display: none;
+}
+</style>
