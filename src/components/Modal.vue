@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed , watch} from 'vue';
 
 const props = defineProps(['carDetails', 'show', 'userId']);
 const emit = defineEmits(['update:show']);
@@ -27,6 +27,13 @@ const deletedCars = ref(new Set());
 const closeModal = () => {
   emit('update:show', false);
 };
+
+watch(() => props.show, (newValue) => {
+  if (!newValue) {
+    // Clear the deletedCars set when the modal is closed
+    deletedCars.value.clear();
+  }
+});
 
 const deleteCar = async (carId) => {
   const tokenJson = localStorage.getItem('token');
